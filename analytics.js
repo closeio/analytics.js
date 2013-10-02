@@ -1222,6 +1222,7 @@ module.exports = function alias (object, aliases) {
         }
     }
 };
+
 });
 require.register("segmentio-canonical/index.js", function(exports, require, module){
 module.exports = function canonical () {
@@ -3096,7 +3097,8 @@ Analytics.prototype._invoke = function (method, args) {
   var options = args[args.length-1]; // always the last one
   each(this._integrations, function (name, integration) {
     if (!isEnabled(integration, options)) return;
-    integration.invoke.apply(integration, args);
+    var clonedArgs = clone(args)
+    integration.invoke.apply(integration, clonedArgs);
   });
   return this;
 };

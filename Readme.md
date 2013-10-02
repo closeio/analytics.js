@@ -8,4 +8,4 @@ This branch contains the custom build of Analytics.js for Close.io.
 ### One-time setup:
 
 `npm install -g component`
-`npm update`
+
